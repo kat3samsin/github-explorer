@@ -32,7 +32,6 @@ export const thunk_action_creator = searchKey => {
         } else {
           console.log('result: ', data)
           dispatch(getProjectsSuccess(data))
-
         };
       })
       .catch(err => dispatch(getProjectsError()));

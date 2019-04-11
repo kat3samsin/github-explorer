@@ -1,10 +1,13 @@
 body {
-  margin: 0;
+  margin: 10;
   padding: 0;
   font-family: sans-serif;
   background: #fbfafc;
   font-family: "Segoe UI";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 input {
   border: 1.2px solid #141414;
   background: #fff;
@@ -32,6 +35,7 @@ input {
   font-size: 1.2rem;
   transition: all 0.2s ease-in-out;
   outline: none;
+  width: 50%;
 }
 
 .button:hover {
@@ -56,5 +60,10 @@ input {
   flex-direction: column;
   padding: 10px 20px;
   margin: 60px;
+}
+
+table, td {
+  border-collapse: collapse;
+  border: 1px solid #000000;
 }
 

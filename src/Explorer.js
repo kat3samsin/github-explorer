@@ -18,7 +18,7 @@ class Explorer extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input required type="text" ref={(input => this.getSearch = input)} placeholder="Enter organization name" />&nbsp;
+          <input required type="text" ref={(input => this.getSearch = input)} placeholder="Enter organization name" /><br />
           <button className='button'>Search</button>
         </form>
       </div>
