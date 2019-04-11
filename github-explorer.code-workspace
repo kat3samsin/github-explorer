@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+    ],
+    "settings": {
+        "sonarqube-inject.enableLinter": false,
+        "sonarqube-inject.sourcePath": "src/**/*.*",
+        "editor.tabSize": 2
+    }
+}
