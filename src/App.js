@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>GitHub Project Explorer</h1>
+        <h1 className='title'>GitHub Project Explorer</h1>
         <Explorer />
         <Projects />
       </div>
