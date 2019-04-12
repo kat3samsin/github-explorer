@@ -7,7 +7,6 @@ class Explorer extends Component {
     e.preventDefault();
     const searchKey = this.getSearch.value;
     const data = {
-      id: new Date(),
       searchKey
     };
 

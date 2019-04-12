@@ -6,10 +6,10 @@ export const getProjects = () => {
   };
 };
 
-export const getProjectsSuccess = post => {
+export const getProjectsSuccess = data => {
   return {
     type: "GET_PROJECTS_SUCCESS",
-    data: post
+    data: data
   };
 };
 
@@ -18,6 +18,21 @@ export const getProjectsError = () => {
     type: "GET_PROJECTS_ERROR"
   };
 };
+
+export const sortProjects = (type, data) => {
+  return {
+      type: "SORT",
+      sortType: type,
+      data: data
+    }
+};
+
+export const sort = type => {
+  return function(dispatch, getState) {
+    var state = getState();
+    dispatch(sortProjects(type, state.data));
+  };
+}
 
 export const thunk_action_creator = searchKey => {
   const key = searchKey.replace(/\s/g, "");
