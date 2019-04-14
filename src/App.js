@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Explorer from './Explorer';
-import Projects from './Projects'
+import Explorer from './components/Explorer';
+import Projects from './components/Projects'
 
 class App extends Component {
   render() {

@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input {
+.org {
   border: 1.2px solid #141414;
   background: #fff;
   width: 50%;
@@ -70,6 +70,7 @@ table {
 thead {
   font-size: 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 tr:nth-child(even) {
@@ -86,4 +87,38 @@ td {
   width: 50%;
   padding: 10px;
   text-align: center;
+}
+
+.pagination {
+  text-align: right;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer
+}
+.filterform {
+  text-align: left;
+}
+.filter {
+  border: 1.2px solid #141414;
+  background: #fff;
+  text-align: left;
+  font-size: 0.8rem;
+  /* width: 50%; */
+  padding: 10px;
+  outline: none;
+  border-radius: 2px;
+}
+
+.filterbutton {
+  border: 1.2px solid #141414;
+  background: #fff;
+  /* text-align: left; */
+  font-size: 0.8rem;
+  /* width: 50%; */
+  padding: 10px;
+  outline: none;
+  border-radius: 2px;
 }
