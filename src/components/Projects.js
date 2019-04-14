@@ -20,12 +20,10 @@ class Projects extends Component {
           <div>
           <h2 className='title'>Projects</h2>
           <table width='100%'>
-            <thead>
-              <tr>
-                <td><Filter /></td>
-                <td><Pagination /></td>
-              </tr>
-            </thead>
+            <tr>
+              <td><Filter /></td>
+              <td><Pagination /></td>
+            </tr>
           </table>
           <table width='100%'>
           <thead>
