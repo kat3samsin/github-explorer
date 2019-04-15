@@ -10,7 +10,7 @@ class Projects extends Component {
   sort(type) {
     this.props.dispatch(sort(type));
   }
-  
+
   render() {
     return (
       <div>
@@ -20,18 +20,24 @@ class Projects extends Component {
           <div>
           <h2 className='title'>Projects</h2>
           <table width='100%'>
-            <tr>
-              <td><Filter /></td>
-              <td><Pagination /></td>
-            </tr>
+            <tbody>
+                <tr>
+                <td><Filter /></td>
+                <td><Pagination /></td>
+                </tr>
+            </tbody>
           </table>
           <table width='100%'>
           <thead>
                 <tr>
-                  <td onClick={this.sort.bind(this, 'name')}>Name</td>
-                  <td onClick={this.sort.bind(this, 'language')}>Language</td>
-                  <td onClick={this.sort.bind(this, 'stargazers_count')}>Stars</td>
-                  <td onClick={this.sort.bind(this, 'forks')}>Forks</td>
+                  <td>Name</td>
+                  <td>Language</td>
+                  <td onClick={this.sort.bind(this, 'stars')}>Stars
+                    {this.props.results.sort ==='stars' ? this.props.results.order === 'desc' ? '▼' : '▲' : '▲▼'}
+                  </td>
+                  <td onClick={this.sort.bind(this, 'forks')}>Forks
+                  {this.props.results.sort ==='forks' ? this.props.results.order === 'desc' ? '▼' : '▲' : '▲▼'}
+                  </td>
                 </tr>
           </thead>
           <tbody>

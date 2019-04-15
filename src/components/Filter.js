@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { filter, clearFilter } from "../actions/getProjects";
+import { filter, getProjects } from "../actions/getProjects";
 import { connect } from 'react-redux';
 
 class Pagination extends Component {
@@ -12,14 +12,20 @@ class Pagination extends Component {
     this.props.dispatch(filter(filters));
   }
   clearFilters = () => {
-    this.props.dispatch(clearFilter());
+    this.props.dispatch(getProjects());
     this.getFilter.value = "";
   }
-  
+
+  handleOnClick = (e) => {
+    if (e.keyCode === 13) {
+        this.applyFilters();
+    }
+  }
+
   render() {
     return (
       <div className='filterform'>
-        <input className='filter' required type="text" ref={(input => this.getFilter = input)} placeholder="Enter language" />&nbsp;
+        <input className='filter' onKeyUp={this.handleOnClick} required type="text" ref={(input => this.getFilter = input)} placeholder="Enter language" />&nbsp;
         <button className='filterbutton' onClick={this.applyFilters}>APPLY</button>&nbsp;
         <button className='filterbutton' onClick={this.clearFilters}>CLEAR</button>
       </div>
