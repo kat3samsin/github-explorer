@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { filter, getProjects } from "../actions/getProjects";
 import { connect } from 'react-redux';
 
-class Pagination extends Component {
+export class Filter extends Component {
   applyFilters = () => {
     const filters = {
       type: 'language',
@@ -33,10 +33,4 @@ class Pagination extends Component {
    }
 }
 
-const mapStateToProps = (state) => {
-  return {
-      results: state
-  }
-}
-
-export default connect(mapStateToProps)(Pagination);
+export default connect()(Filter);

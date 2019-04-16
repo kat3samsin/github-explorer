@@ -93,7 +93,7 @@ export const callApi = (dispatch, apiData) => {
       if (data.message === "Not Found") {
         throw new Error("No such user found!!");
       } else {
-        let lastPage = (Object.keys(headers).length === 0) ? 1 : getTotalPage(headers);
+        let lastPage = (Object.keys(headers).length === 0) ? 1 : apiData.isLastPage ? getCurrentPage(headers) : getTotalPage(headers);
         dispatch(getProjectsSuccess({
           data: data.items,
           headers,

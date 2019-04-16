@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { getProjects } from "../actions/getProjects";
 
-class Explorer extends Component {
+export class Explorer extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    const searchKey = this.getSearch.value;
+    const searchKey = this.getSearch ? this.getSearch.value : '';
     const data = {
       id: new Date(),
       searchKey
     };
 
-    this.props.dispatch(getProjects(data.searchKey));
-    this.getSearch.value = "";
+    this.props.search(data.searchKey);
   }
   render() {
     return (
@@ -25,4 +24,11 @@ class Explorer extends Component {
     );
   }
 }
-export default connect()(Explorer);
+function mapDispatchToProps(dispatch) {
+  return {
+    search: (searchKey) => {
+      dispatch(getProjects(searchKey))
+   }
+  }
+ }
+export default connect(null, mapDispatchToProps)(Explorer);

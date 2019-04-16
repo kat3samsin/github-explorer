@@ -17,7 +17,8 @@ const projectsReducer = (state = initialState, action) => {
     case 'GET_PROJECTS':
         return Object.assign({}, state, {
           isError: false,
-          isFetching: true
+          isFetching: true,
+          data: {},
         });
       case 'GET_PROJECTS_SUCCESS':
         return Object.assign({}, state, {
@@ -33,7 +34,8 @@ const projectsReducer = (state = initialState, action) => {
       case 'GET_PROJECTS_ERROR':
         return Object.assign({}, state, {
           isFetching: false,
-          isError: true
+          isError: true,
+          data: {}
         });
     default:
       return state;

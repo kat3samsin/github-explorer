@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 import Filter from './Filter';
 import { sort } from "../actions/getProjects";
 
-class Projects extends Component {
+export class Projects extends Component {
   sort(type) {
     this.props.dispatch(sort(type));
   }
@@ -14,9 +14,9 @@ class Projects extends Component {
   render() {
     return (
       <div>
-        {this.props.results.isFetching ? <h3>Loading...</h3> : null}
-        {this.props.results.isError ? <h3>Nada.</h3> : null}
-        {Object.keys(this.props.results.data).length > 0 ?
+        {this.props.isFetching ? <h3>Loading...</h3> : null}
+        {this.props.isError ? <h3>Nada.</h3> : null}
+        {this.props.data && this.props.data.length > 0 ?
           <div>
           <h2 className='title'>Projects</h2>
           <table width='100%'>
@@ -33,15 +33,15 @@ class Projects extends Component {
                   <td>Name</td>
                   <td>Language</td>
                   <td onClick={this.sort.bind(this, 'stars')}>Stars
-                    {this.props.results.sort ==='stars' ? this.props.results.order === 'desc' ? '▼' : '▲' : '▲▼'}
+                    {this.props.sort ==='stars' ? this.props.order === 'desc' ? '▼' : '▲' : '▲▼'}
                   </td>
                   <td onClick={this.sort.bind(this, 'forks')}>Forks
-                  {this.props.results.sort ==='forks' ? this.props.results.order === 'desc' ? '▼' : '▲' : '▲▼'}
+                  {this.props.sort ==='forks' ? this.props.order === 'desc' ? '▼' : '▲' : '▲▼'}
                   </td>
                 </tr>
           </thead>
           <tbody>
-            {this.props.results.data.map((result) => <Project key={result.id} project={result} />)}
+            {this.props.data.map((d) => <Project key={d.id} project={d} />)}
           </tbody>
         </table>
         <Pagination />
@@ -52,9 +52,7 @@ class Projects extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-      results: state
-  }
+  return state;
 }
 
 export default connect(mapStateToProps)(Projects);
