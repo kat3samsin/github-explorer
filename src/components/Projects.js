@@ -18,7 +18,7 @@ export class Projects extends Component {
         {this.props.isError ? <h3>Nada.</h3> : null}
         {this.props.data && this.props.data.length > 0 ?
           <div>
-          <h2 className='title'>Projects</h2>
+          <h2 className='title'>Repositories</h2>
           <table width='100%'>
             <tbody>
                 <tr>
