@@ -42,21 +42,21 @@ describe('Pagination', () => {
 
   describe('click next page', () => {
     it('should pass next', () => {
-      wrapper.find('span').at(0).simulate('click');
-      expect(turnPageFn).toHaveBeenCalledWith('next');
+      wrapper.find('span').at(1).simulate('click');
+      expect(turnPageFn).toHaveBeenCalledWith('prev');
     });
   });
 
   describe('click prev page', () => {
     it('should pass prev', () => {
-      wrapper.find('span').at(0).simulate('click');
-      expect(turnPageFn).toHaveBeenCalledWith('prev');
+      wrapper.find('span').at(2).simulate('click');
+      expect(turnPageFn).toHaveBeenCalledWith('next');
     });
   });
 
   describe('click last page', () => {
     it('should last prev', () => {
-      wrapper.find('span').at(0).simulate('click');
+      wrapper.find('span').at(3).simulate('click');
       expect(turnPageFn).toHaveBeenCalledWith('last');
     });
   });
