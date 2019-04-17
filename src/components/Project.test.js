@@ -3,15 +3,16 @@ import { mount, shallow } from 'enzyme';
 import Project from './Project';
 
 describe('Project', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Project />);
+  });
   it('renders without crashing', () => {
-    const component = shallow(<Project />);
-    expect(component).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should not render anything', () => {
-    const wrapper = mount(<Project />);
     expect(wrapper.html()).toBeNull();
-    wrapper.unmount();
   });
 
   it('should render Project', () => {
@@ -22,8 +23,8 @@ describe('Project', () => {
       stargazers_count: 10000,
       forks: 100000
     }
-    const wrapper = mount(<Project key='1'  project={project}/>);
-    expect(wrapper.html()).toBe(
+    const component = shallow(<Project key='1'  project={project}/>);
+    expect(component.html()).toBe(
       '<tr>'+
         '<td><a href="'+project.html_url+'/branches/all">'+project.name+'</a></td>'+
         '<td>'+project.language+'</td>'+
@@ -31,6 +32,5 @@ describe('Project', () => {
         '<td>'+project.forks.toLocaleString()+'</td>' +
       '</tr>'
     );
-    wrapper.unmount();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Projects } from './Projects';
 
 describe('Projects', () => {
@@ -7,29 +7,30 @@ describe('Projects', () => {
     let component = shallow(<Projects isFetching={false} isError={false} data={[]} />);
     expect(component).toMatchSnapshot();
   });
-  
-  it('isFetching should show Loading...', () => {
-    const wrapper = mount(<Projects isFetching={true} isError={false} data={[]} />);
-    expect(wrapper.html()).toBe('<div><h3>Loading...</h3></div>');
-    wrapper.unmount();
+
+  describe('isFetching is true', () => {
+    it('should show Loading...', () => {
+      const wrapper = shallow(<Projects isFetching={true} isError={false} data={[]} />);
+      expect(wrapper.html()).toBe('<div><h3>Loading...</h3></div>');
+    });
   });
 
-  it('isFetching should show Nada.', () => {
-    const wrapper = mount(<Projects isFetching={false} isError={true} data={[]} />);
-    expect(wrapper.html()).toBe('<div><h3>Nada.</h3></div>');
-    wrapper.unmount();
+  describe('isError is true', () => {
+    it('should show Nada.', () => {
+      const wrapper = shallow(<Projects isFetching={false} isError={true} data={[]} />);
+      expect(wrapper.html()).toBe('<div><h3>Nada.</h3></div>');
+    });
   });
-
-  // it('isFetching should show Projects', () => {
-  //   const data = [{
-  //     html_url: 'some url',
-  //     name: 'some project name',
-  //     stargazers_count: 10000,
-  //     forks: 100000
-  //   }];
-    
-  //   const wrapper = mount(<Projects isFetching={false} isError={false} data={data} />);
-  //   expect(wrapper.html()).toBe('<div><h3>Projects</h3></div>');
-  //   wrapper.unmount();
-  // });
+  describe('2 projects are retrieved', () => {
+    it('should show 2 Project(s)', () => {
+      const wrapper = shallow(<Projects isFetching={false} isError={false} data={[{},{}]} />);
+      expect(wrapper.find('Project')).toHaveLength(2)
+    });
+  });
+  describe('no project retrieved', () => {
+    it('should not show Project', () => {
+      const wrapper = shallow(<Projects isFetching={false} isError={false} data={[]} />);
+      expect(wrapper.find('Project')).toHaveLength(0);
+    });
+  });
 });

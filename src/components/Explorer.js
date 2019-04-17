@@ -30,5 +30,5 @@ function mapDispatchToProps(dispatch) {
       dispatch(getProjects(searchKey))
    }
   }
- }
+}
 export default connect(null, mapDispatchToProps)(Explorer);

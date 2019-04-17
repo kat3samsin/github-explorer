@@ -6,13 +6,13 @@ export class Filter extends Component {
   applyFilters = () => {
     const filters = {
       type: 'language',
-      value: this.getFilter.value.toLowerCase()
+      value: this.getFilter ? this.getFilter.value.toLowerCase() : ''
     };
 
-    this.props.dispatch(filter(filters));
+    this.props.applyFilters(filters);
   }
   clearFilters = () => {
-    this.props.dispatch(getProjects());
+    this.props.clearFilters();
     this.getFilter.value = "";
   }
 
@@ -26,11 +26,19 @@ export class Filter extends Component {
     return (
       <div className='filterform'>
         <input className='filter' onKeyUp={this.handleOnClick} required type="text" ref={(input => this.getFilter = input)} placeholder="Enter language" />&nbsp;
-        <button className='filterbutton' onClick={this.applyFilters}>APPLY</button>&nbsp;
-        <button className='filterbutton' onClick={this.clearFilters}>CLEAR</button>
+        <button id='applyFilters' className='filterbutton' onClick={this.applyFilters}>APPLY</button>&nbsp;
+        <button id='clearFilters' className='filterbutton' onClick={this.clearFilters}>CLEAR</button>
       </div>
     );
    }
 }
-
-export default connect()(Filter);
+function mapDispatchToProps(dispatch) {
+  return {
+    applyFilters: (filters) => {
+      dispatch(filter(filters))
+   }, clearFilters: () => {
+      dispatch(getProjects())
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(Filter);
