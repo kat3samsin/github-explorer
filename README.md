@@ -4,7 +4,7 @@ A mini GitHub Project Explorer that uses GitHub API v3, react, redux and redux-t
 # demo
 https://kat3samsin.github.io/github-explorer/
 
-#sandbox
+# sandbox
 https://codesandbox.io/s/github/kat3samsin/github-explorer
 
 # installation
@@ -12,5 +12,3 @@ https://codesandbox.io/s/github/kat3samsin/github-explorer
 2. cd github-explorer
 3. npm install
 4. npm start
-
-
