@@ -1,5 +1,15 @@
 # github-explorer
-A mini GitHub Project Explorer that uses GitHub API v3, react, redux and redux-thunk
+A GitHub repository explorer created using [create-react-app](https://facebook.github.io/create-react-app/).
+
+### Tech Stack
+- react
+- redux
+- redux-thunk
+
+### Testing
+- jest
+- enzyme
+
 
 # demo
 https://kat3samsin.github.io/github-explorer/
