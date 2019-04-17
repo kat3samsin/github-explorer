@@ -15,10 +15,10 @@ export class Pagination extends Component {
     ) : (
         <div className='pagination'>
             Page {this.props.page} of {this.props.totalPage}&nbsp;&nbsp;
-            <span id='first' className='link' onClick={this.handleClick('first')}>&#60;&#60;</span>&nbsp;
-            <span id='prev' className='link' onClick={this.handleClick('prev')}>&#60;</span>&nbsp;
-            <span id='next' className='link' onClick={this.handleClick('next')}>&#62;</span>&nbsp;
-            <span id='last' className='link' onClick={this.handleClick('last')}>&#62;&#62;</span>
+            <span id='first' className='link' onClick={this.handleClick.bind(this,'first')}>&#60;&#60;</span>&nbsp;
+            <span id='prev' className='link' onClick={this.handleClick.bind(this,'prev')}>&#60;</span>&nbsp;
+            <span id='next' className='link' onClick={this.handleClick.bind(this,'next')}>&#62;</span>&nbsp;
+            <span id='last' className='link' onClick={this.handleClick.bind(this,'last')}>&#62;&#62;</span>
         </div>
       );
    }
