@@ -74,10 +74,15 @@ export const filter = filters => {
 
 export const turnPage = (page) => {
   return (dispatch, getState) => {
+    var state = getState();
+    if (!state.headers[page]) {
+      return;
+    }
+    
     var apiData = {
-      url: getState().headers[page],
+      url: state.headers[page],
       isFirstPage: page === 'first',
-      isLastPage: page === 'last'
+      isLastPage: page === 'last' || Number(state.page) + 1 === Number(state.totalPage)
     }
     return callApi(dispatch, apiData);
   }
@@ -122,7 +127,7 @@ export const getCurrentPage = headers => {
 }
 
 export const getTotalPage = headers => {
-  return headers.last.match(/page=(\d+)/)[1];
+  return headers.last ? headers.last.match(/page=(\d+)/)[1] : null;
 }
 
 export const parseHeaders = headers => {

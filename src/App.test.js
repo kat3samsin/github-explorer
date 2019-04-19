@@ -4,6 +4,7 @@ import App from './App';
 
 describe('App', ()=> {
   it('renders without crashing', () => {
-    shallow(<App />);
+    let component = shallow(<App />);
+    expect(component).toMatchSnapshot();
   });
 })

@@ -6,7 +6,7 @@ export class Filter extends Component {
   applyFilters = () => {
     const filters = {
       type: 'language',
-      value: this.getFilter ? this.getFilter.value.toLowerCase() : ''
+      value: this.getFilter ? encodeURIComponent(this.getFilter.value.toLowerCase()) : ''
     };
 
     this.props.applyFilters(filters);
