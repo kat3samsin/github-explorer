@@ -27,17 +27,18 @@ export const getProjectsError = () => {
 export let key = '';
 export const getProjects = searchKey => {
   key = searchKey ? searchKey.replace(/\s/g, "") : key;
-  store.dispatch(initialize());
+  
   var apiData = {
     url: `https://api.github.com/search/repositories?q=user:${key}&sort=stars&order=desc`,
     isFirstPage: true,
     isLastPage: false,
     sort: 'stars',
     order: 'desc'
-  }
-  return function (dispatch) {
-    callApi(dispatch, apiData);
-  }
+  };
+  return dispatch => {
+    dispatch(initialize());
+    return callApi(dispatch, apiData);
+  };
 };
 
 export const sort = type => {
@@ -52,10 +53,10 @@ export const sort = type => {
     isLastPage: false,
     sort: type,
     order: order
-  }
-  return function (dispatch) {
-    callApi(dispatch, apiData);
-  }
+  };
+  return dispatch => {
+    return callApi(dispatch, apiData);
+  };
 }
 
 export const filter = filters => {
@@ -65,20 +66,20 @@ export const filter = filters => {
     isLastPage: false,
     sort: 'stars',
     order: 'desc'
-  }
-  return function (dispatch) {
-    callApi(dispatch, apiData);
-  }
+  };
+  return dispatch => {
+    return callApi(dispatch, apiData);
+  };
 }
 
 export const turnPage = (page) => {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     var apiData = {
       url: getState().headers[page],
       isFirstPage: page === 'first',
       isLastPage: page === 'last'
     }
-    callApi(dispatch, apiData);
+    return callApi(dispatch, apiData);
   }
 }
 
@@ -101,7 +102,7 @@ export const callApi = (dispatch, apiData) => {
           totalPage: lastPage,
           order: apiData.order,
           sort: apiData.sort
-        }))
+        }));
       };
     })
     .catch(err => {
