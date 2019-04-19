@@ -26,12 +26,15 @@ describe('Filter', () => {
     });
   });
 
-  // describe('when clearFilters button is clicked', () => {
-  //   it('should call mock clearFiltersFn', () => {
-  //     wrapper.find('#clearFilters').prop('onClick')({preventDefault() {}});
-  //     expect(clearFiltersFn.mock.calls.length).toBe(1);
-  //   });
-  // });
+  describe('when clearFilters button is clicked', () => {
+    it('should call mock clearFiltersFn', () => {
+      jest.mock('./Filter');
+      Filter.prototype.getFilter = {value: ''};
+
+      wrapper.find('#clearFilters').prop('onClick')({preventDefault() {}});
+      expect(clearFiltersFn.mock.calls.length).toBe(1);
+    });
+  });
 
   describe('when enter is pressed', () => {
     it('should call mock applyFiltersFn', () => {
